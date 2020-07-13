@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-webp">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 预加载说明 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Preloading_content-->
+    <link rel="preload" href="js/mediaelement-and-player.min.js" as="script">
+    <link rel="preload" href="images/welcome/video-cover-v2.png" as="image">
+    <link rel="preload" href="images/welcome/video-cover-v2.webp" as="image">
+    <script>
+        // webp检测
+        ;
+        (function(doc) {
+            // 给html根节点加上webp类名
+            function addRootTag() {
+                doc.documentElement.className = doc.documentElement.className.replace("no-webp", "webp");
+            }
+            // 判断是否有webp=A这个cookie
+            if (!/(^|;\s?)webp=A/.test(document.cookie)) {
+                var image = new Image();
+                // 图片加载完成时候的操作
+                image.onload = function() {
+                    // 图片加载成功且宽度为1，那么就代表支持webp了，因为这张base64图是webp格式。如果不支持会触发image.error方法
+                    if (image.width == 1) {
+                        // html根节点添加class，并且埋入cookie
+                        addRootTag();
+                        // document.cookie = "webp=A; max-age=31536000; domain=gold.xingdongpai.org";
+                    }
+                };
+                // 一张支持alpha透明度的webp的图片，使用base64编码
+                image.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==';
+            } else {
+                addRootTag();
+            }
+        }(document));
+    </script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
+    <link rel="stylesheet" href="ibis-v1.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "封神丹 Mind Matrix",
+            "image": "open/meta.webp",
+            "description": "封神丹长生不老煲汤料配方。封神丹 Mind Matrix 是一款可治百疾的补品，由行动派荣誉出品。",
+            "brand": "IBIS.LOVE",
+            "offers": {
+                "@type": "AggregateOffer",
+                "url": "https://gold.xingdongpai.org",
+                "priceCurrency": "USD",
+                "lowPrice": "1",
+                "highPrice": "55",
+                "offerCount": "9999"
+            }
+        }
+    </script>
+    <!-- Primary Meta Tags -->
+    <title>封神丹煲汤料</title>
+    <meta name="title" content="封神丹煲汤料">
+    <meta name="description" content="封神丹长生不老煲汤料配方">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gold.xingdongpai.org">
+    <meta property="og:title" content="封神丹煲汤料">
+    <meta property="og:description" content="封神丹长生不老煲汤料配方">
+    <meta property="og:image" content="/open/meta.webp">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gold.xingdongpai.org">
+    <meta property="twitter:title" content="封神丹煲汤料">
+    <meta property="twitter:description" content="封神丹长生不老煲汤料配方">
+    <meta property="twitter:image" content="/open/meta.webp">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="封神丹煲汤料" />
+    <meta name="author" content="鸟神">
+    <meta name="keywords" content="仙丹, 补品, 长生, 益智, 延年, 草本, 煲汤料方, 保健品, 送礼, dietary supplements, health supplements, remedy, 补肾, 正气, 补血, 补气, 咖啡, 精力充沛" />
+    <meta name="apple-mobile-web-app-title" content="IBIS.LOVE" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1A86FD">
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-navbutton-color" content="#FFFFFF">
+
+    <meta name="msapplication-TileImage" content="open/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="open/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="open/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="open/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="open/mstile-310x310.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="open/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="open/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="open/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="open/favicon-128x128.png">
+    <link rel="icon" type="image/png" sizes="196x196" href="open/favicon-196x196.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="open/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="open/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="open/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="open/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="open/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="open/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="open/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="open/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="open/apple-touch-icon-180x180.png" />
+    <link rel="mask-icon" href="open/safari-pinned-tab.svg" color="#1A86FD" />
+    <link rel="manifest" href="open/manifest.json">
+    <link rel="canonical" href="index.html" />
+
+    <script>
+        function showMenu() {
+            var b = document.querySelector("body");
+            b.classList.toggle("mobile-opened");
+        }
+    </script>
+    <script>
+        var hasClass = (function() {
+            var div = document.createElement("div");
+            if ("classList" in div && typeof div.classList.contains === "function") {
+                return function(elem, className) {
+                    return elem.classList.contains(className);
+                };
+            } else {
+                return function(elem, className) {
+                    var classes = elem.className.split(/\s+/);
+                    for (var i = 0; i < classes.length; i++) {
+                        if (classes[i] === className) {
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+            }
+        })();
+    </script>
+</head>
+
+<body class="" id="top">
+    <div class="page-wrap">
+        <header class="welcome welcome-bg welcome-bg--height jQ_welcome">
+            <div class="topbar-wrap">
+                <nav class="topbar jQ_topbar">
+                    <div class="container">
+                        <a href="index.html" class="topbar-logo">
+                            <img src="images/about/topbar-logo.svg" alt="">
+                        </a>
+                        <a href="#" class="topbar-menu-mobile jQ_mobileSwitch" onclick="showMenu()">
+                            <span></span>
+                        </a>
+                        <div class="topbar-menu">
+                            <a href="https://ai.xingdongpai.org" class="">无极全图</a>
+                            <a href="https://kunlun.xingdongpai.org" class="">昆仑法门</a>
+                            <a href="https://niaobi.net" class="">鸟币支付</a>
+                            <span class="topbar-signup">
+                                <a href="https://xingdongpai.org" class="btn btn-green">返回行动派</a>
+                            </span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="topbar-sticky jQ_topbarSticky">
+                <nav class="topbar jQ_topbar">
+                    <div class="container">
+                        <a href="index.html" class="topbar-logo">
+                            <img src="images/about/topbar-logo.svg" alt="">
+                        </a>
+                        <a href="#" class="topbar-menu-mobile jQ_mobileSwitch" onclick="showMenu()">
+                            <span></span>
+                        </a>
+                        <div class="topbar-menu">
+                            <a href="https://ai.xingdongpai.org" class="">无极全图</a>
+                            <a href="https://kunlun.xingdongpai.org" class="">昆仑法门</a>
+                            <a href="https://niaobi.net" class="">鸟币支付</a>
+                            <span class="topbar-signup">
+                                    <a href="https://xingdongpai.org" class="btn btn-green">返回行动派</a>
+                                </span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="row welcome-wrap">
+                    <div class="span-5-desktop">
+                        <div class="features-lead">
+                            <h1>封神丹 MIND MATRIX</h1>
+                            <h2 class="features-lead__desc">长生不老煲汤料配方！爱是最高智慧。</h2>
+                            <form action="#" class="sign-up-form jQ_registerForm" novalidate>
+                                <div class="sign-up-form-loader"></div>
+                                <div class="sign-up-form-providers">
+                                    <a href="open/gold-2020.7.8.png" target="_blank" class="btn btn-big btn-bitbucket btn-social jQ_signInWith" data-vendor="fire">
+                                        <i class="icon-fire"></i> 下载煲汤料配方
+                                    </a>
+                                    <div class="btn-container">
+                                        <a href="#" class="btn btn-big btn-link btn-link--light jQ_signInWith" data-vendor="google">
+                                            感谢联合创始人&天地精华
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="span-10-tablet span-7-desktop m-auto">
+                        <div class="video mejs__player" id="vid"></div>
+                        <script>
+                            var vidBox = document.getElementById("vid");
+                            hasClass(document.documentElement, "no-webp") ? vidBox.innerHTML = '<video id="my-video" width="750" height="422" style="max-width:100%;" poster="images/welcome/video-cover-v2.png" preload="none" controls playsinline webkit-playsinline><source src="ibis-750x422-min.mp4" type="video/mp4; codecs=avc1"><source src="ibis-750x422.mov" type="video/mp4; codecs=hvc1"><source src="ibis-750x422.webm" type="video/webm"><source src="ibis-750x422.ogg" type="video/ogg"></video>' : vidBox.innerHTML = '<video id="my-video" width="750" height="422" style="max-width:100%;" poster="images/welcome/video-cover-v2.webp" preload="none" controls playsinline webkit-playsinline><source src="ibis-750x422-min.mp4" type="video/mp4; codecs=avc1"><source src="ibis-750x422.mov" type="video/mp4; codecs=hvc1"><source src="ibis-750x422.webm" type="video/webm"><source src="ibis-750x422.ogg" type="video/ogg"></video>';
+                        </script>
+                    </div>
+                </div>
+                <form action="#" class="sign-up-form jQ_registerForm show-mobile" novalidate>
+                    <div class="sign-up-form-loader"></div>
+                    <div class="sign-up-form-providers">
+                        <a href="open/gold-2020.7.8.png" class="btn btn-big btn-bitbucket btn-social jQ_signInWith" data-vendor="fire">
+                            <i class="icon-fire"></i> 下载煲汤料配方
+                        </a>
+                        <div class="btn-container">
+                            <a href="#" class="btn btn-big btn-link btn-link--light jQ_signInWith" data-vendor="google">
+                                    感谢联合创始人&天地精华
+                                </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </header>
+        <section class="section client-section">
+            <div class="section-intro d-desktop-none">
+                <div class="section-name">联合推荐</div>
+            </div>
+            <div class="container">
+                <div class="client-logo-row">
+                    <div class="client-logo">
+                        <img src="images/clients/niaobi.svg" alt="niaobi.net">
+                    </div>
+                    <div class="client-logo">
+                        <img src="images/clients/reqing.svg" alt="reqing.org">
+                    </div>
+                    <div class="client-logo">
+                        <img src="images/clients/action.svg" alt="xingdongpai.org">
+                    </div>
+                    <div class="client-logo">
+                        <img src="images/clients/taiji.svg" alt="kunlun.xingdongpai.org">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="section-intro">
+                    <div class="section-image">
+                        <img src="images/3days.svg" alt="">
+                    </div>
+                    <h3 class="section-name">补益煲汤料</h3>
+                    <p class="section-description">制作简单/配方开源/原料易储存</p>
+                </div>
+                <div class="section--center row">
+                    <div class="section-column span-10-mobile span-6-tablet span-4-desktop">
+                        <img class="section-column__icon" src="images/brain.svg" alt="">
+                        <h3 class="section-column__title">肾精上注</h3>
+                        <p class="section-column__description">养精神，获得泉涌般灵感</p>
+                    </div>
+                    <div class="section-column span-10-mobile span-6-tablet span-4-desktop">
+                        <img class="section-column__icon" src="images/hair.svg" alt="">
+                        <h3 class="section-column__title">美颜亮发</h3>
+                        <p class="section-column__description">面生光华，媚好常如童子</p>
+                    </div>
+                    <div class="section-column span-10-mobile span-6-tablet span-4-desktop">
+                        <img class="section-column__icon" src="images/eye.svg" alt="">
+                        <h3 class="section-column__title">明目益智</h3>
+                        <p class="section-column__description">强筋骨，益气力，滋养五脏</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section bg-hexa-l">
+            <div class="container">
+                <div class="section-intro">
+                    <div class="section-image">
+                        <img src="images/magic.svg" alt="">
+                    </div>
+                    <h3 class="section-name">养命以应天</h3>
+                    <p class="section-description">「本经」上品，多服、久服不伤人</p>
+                </div>
+                <div class="section--center row">
+                    <div class="section-column span-10-mobile span-6-tablet span-4-desktop">
+                        <img class="section-column__icon" src="images/heart.svg" alt="">
+                        <h3 class="section-column__title">补虚劳 治百疾</h3>
+                        <p class="section-column__description">在小小药丸中运用象学数学和中药
+                            <br>完美诠释"爱能治愈一切"</p>
+                    </div>
+                    <div class="section-column span-10-mobile span-6-tablet span-4-desktop">
+                        <img class="section-column__icon" src="images/pineal.svg" alt="">
+                        <h3 class="section-column__title">纯草本原料</h3>
+                        <p class="section-column__description">本经上品，适合长期服用
+                            <br>无任何毒副作用</p>
+                    </div>
+                    <!-- <div class="section-column span-10-mobile span-6-tablet span-4-desktop">
+                            <img class="section-column__icon" src="images/wine.svg" alt="">
+                            <h3 class="section-column__title">「丸剂版」可配黄酒</h3>
+                            <p class="section-column__description">餐前以温黄酒服用20~30粒
+                                <br>每天一到两次，作为日常膳食补充</p>
+                        </div> -->
+                </div>
+            </div>
+        </section>
+        <section class="sign-up section">
+            <div class="container">
+                <div class="section-intro mb-m">
+                    <h3 class="section-name text-white">可治百疾的补益煲汤料
+                        <br>五脏频率调整至正常状态则百病不生</h3>
+                </div>
+                <form action="#" class="sign-up-form jQ_registerForm" novalidate>
+                    <div class="sign-up-form-loader"></div>
+                    <div class="sign-up-form-providers">
+                        <a href="open/gold-2020.7.8.png" target="_blank" class="btn btn-big btn-bitbucket btn-social jQ_signInWith" data-vendor="fire" download>
+                            <i class="icon-fire"></i> 下载煲汤料配方
+                        </a>
+
+                        <div class="btn-container">
+
+                        </div>
+                    </div>
+                </form>
+                <p class="sign-up-meta text-white">最后更新于2020年7月，始于2015年</p>
+            </div>
+        </section>
+        <section class="section3" id="code-delivery">
+            <div class="container">
+                <div class="section-intro">
+                    <div class="section-image">
+                        <img src="images/target-user.svg" alt="">
+                    </div>
+                    <div class="section-name">适宜人群</div>
+                    <p class="section-description">
+                        除16岁以下儿童和孕妇外，所有人群适用
+                    </p>
+                </div>
+                <div class="features-list">
+                    <div class="features-list-column">
+                        <div>
+                            <div class="feature-image">
+                                <picture>
+                                    <source srcset="images/students-v0.1.webp" type="image/webp">
+                                    <source srcset="images/students-v0.1.jpg" type="image/jpg">
+                                    <img src="images/students-v0.1.jpg" alt="">
+                                </picture>
+                            </div>
+                            <h3>高三党、考研党等脑力活动者</h3>
+                            <p>提升记忆、思考、回想的能力，增强专注程度，减轻头脑压力。</p>
+                        </div>
+                        <div>
+                            <div class="feature-image">
+                                <picture>
+                                    <source srcset="images/athletes-v0.1.webp" type="image/webp">
+                                    <source srcset="images/athletes-v0.1.jpg" type="image/jpg">
+                                    <img src="images/athletes-v0.1.jpg" alt="">
+                                </picture>
+                            </div>
+                            <h3>运动员、健身爱好者等高强度体力活动者</h3>
+                            <p>激发大脑运用强烈的动机和意志力，使身体情绪饱满激昂。</p>
+                        </div>
+                        <div>
+                            <div class="feature-image">
+                                <picture>
+                                    <source srcset="images/coding-v0.1.webp" type="image/webp">
+                                    <source srcset="images/coding-v0.1.jpg" type="image/jpg">
+                                    <img src="images/coding-v0.1.jpg" alt="">
+                                </picture>
+                            </div>
+                            <h3>程序员、数学家等高强度脑力劳动者</h3>
+                            <p>配合咖啡因，金丹能够承载更深层的大脑潜能，让你智慧无比。</p>
+                        </div>
+                    </div>
+                    <div class="features-list-column">
+                        <div>
+                            <div class="feature-image">
+                                <picture>
+                                    <source srcset="images/competitors-v0.1.webp" type="image/webp">
+                                    <source srcset="images/competitors-v0.1.jpg" type="image/jpg">
+                                    <img src="images/competitors-v0.1.jpg" alt="">
+                                </picture>
+                            </div>
+                            <h3>游戏主播、棋牌竞技等竞赛者</h3>
+                            <p>呈现的镇定的兴奋感和清晰的思路，带给你温润持久的高度专注力。</p>
+                        </div>
+                        <div>
+                            <div class="feature-image">
+                                <picture>
+                                    <source srcset="images/professionals-v0.1.webp" type="image/webp">
+                                    <source srcset="images/professionals-v0.1.jpg" type="image/jpg">
+                                    <img src="images/professionals-v0.1.jpg" alt="">
+                                </picture>
+                            </div>
+                            <h3>设计师、作家等工作需要久坐久站的人群</h3>
+                            <p>除了能让灵感不断涌出，还能同时连接多重视角的画面，有如神助。</p>
+                        </div>
+                        <div>
+                            <div class="feature-image">
+                                <picture>
+                                    <source srcset="images/oldmans-v0.1.webp" type="image/webp">
+                                    <source srcset="images/oldmans-v0.1.jpg" type="image/jpg">
+                                    <img src="images/oldmans-v0.1.jpg" alt="">
+                                </picture>
+                            </div>
+                            <h3>中老年人群</h3>
+                            <p>缓慢滋养物理层面的身体，提供内脏、脊柱、大脑功能的长效保护。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="enterprise-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="span-7">
+                        <h2>服用禁忌</h2>
+                        <ul>
+                            <li>忌同时服用其他药物，如有需要遵循医嘱</li>
+                            <li>忌过度生、冷、辛、辣，忌暴饮暴食</li>
+                            <li>远离孕妇和16岁以下儿童</li>
+                        </ul>
+                        <a href="https://github.com/fenixnake" class="btn btn-white">Github</a>
+                    </div>
+                    <div class="span-5">
+                        <img src="images/allergen.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script src="js/mediaelement-and-player.min.js"></script>
+    <script>
+        //判断访问终端
+        var browser = {
+            versions: function() {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: !!u.match(/Android/), //是否安卓
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                    weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+                    qq: u.match(/\sQQ/i) == " qq" //是否QQ
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+
+        //安卓自带浏览器有不显示大播放按钮的bug，单独处理
+        if (browser.versions.android && !browser.versions.weixin && !browser.versions.qq) {
+            document.addEventListener('DOMContentLoaded', function() {
+                var mediaElements = document.querySelectorAll('video'),
+                    i, total = mediaElements.length;
+                for (i = 0; i < total; i++) {
+                    new MediaElementPlayer(mediaElements[i], {
+                        stretching: "auto",
+                        pluginPath: 'video-plugin/',
+                        success: function(media) {}
+                    });
+                }
+            });
+        } else {
+            document.addEventListener("DOMContentLoaded", function() {
+                var mediaElements = document.querySelectorAll("video"),
+                    i, total = mediaElements.length;
+
+                for (i = 0; i < total; i++) {
+                    new MediaElementPlayer(mediaElements[i], {
+                        stretching: "auto",
+                        features: []
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
